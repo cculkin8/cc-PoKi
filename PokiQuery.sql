@@ -8,70 +8,65 @@ SELECT *
 SELECT MAX(Id) NumberOfPoems
 	FROM Poem
 
-SELECT a.Name
-	FROM Author a Where Id < 77
+SELECT top 76 a.Name
+	FROM Author a
 	ORDER BY Name 
 	
 	
-SELECT a.Name, g.Name
+SELECT top 76 a.Name, g.Name
 	FROM Author a 
 	LEFT JOIN Grade g on a.GradeId = g.id
-		where a.Id < 77
 		ORDER BY a.Name 
 
 
-SELECT a.Name, g.Name Grade, ge.Name Gender
+SELECT top 76 a.Name, g.Name Grade, ge.Name Gender
 	FROM Author a 
 	LEFT JOIN Grade g on a.GradeId = g.id
 	LEFT JOIN Gender ge on a.GenderId = ge.Id
-		where a.Id < 77
 		ORDER BY a.Name 
 
-
-SELECT SUM(WordCount) TotalWordCount
+SELECT SUM(WordCount) TotalCount
 	FROM Poem
 
 
-SELECT MIN(CharCount) FewestCharacters
+SELECT MIN(CharCount) LeastCharacters
 	FROM Poem
 
-SELECT COUNT(g.Id) Total3rdGraders
+SELECT COUNT(g.Id) Total3rd
 	FROM Author a
 	LEFT JOIN Grade g on a.GradeId = g.Id
 		where g.Name = '3rd Grade'
 
-SELECT COUNT(g.Id) Total1st2nd3rdGraders
+SELECT COUNT(g.Id) Total1st2nd3rd
 	FROM Author a
 	LEFT JOIN Grade g on a.GradeId = g.Id
 		where g.Name = '3rd Grade' or g.Name = '1st Grade' or g.Name = '2nd Grade'
 
-SELECT COUNT(p.Id) Total4thGradePoems
+SELECT COUNT(p.Id) Total4thPoems
 	FROM Poem p
 	LEFT JOIN Author a on p.AuthorId = a.Id
 		where a.GradeId = 4
 
-SELECT COUNT(p.Id) Total1stGradePoems
+SELECT COUNT(p.Id) Total1stPoems
 	FROM Poem p
 	LEFT JOIN Author a on p.AuthorId = a.Id
 		where a.GradeId = 1
 
-		
-
-SELECT COUNT(p.Id) Total2ndGradePoems
+SELECT COUNT(p.Id) Total2ndPoems
 	FROM Poem p
 	LEFT JOIN Author a on p.AuthorId = a.Id
 		where a.GradeId = 2
 
 		
 
-SELECT COUNT(p.Id) Total3rdGradePoems
+SELECT COUNT(p.Id) Total3rdPoems
 	FROM Poem p
 	LEFT JOIN Author a on p.AuthorId = a.Id
 		where a.GradeId = 3
 
 		
 
-SELECT COUNT(p.Id) Total4thGradePoems
+SELECT COUNT(p.Id) Total4thPoems
 	FROM Poem p
 	LEFT JOIN Author a on p.AuthorId = a.Id
 		where a.GradeId = 4
